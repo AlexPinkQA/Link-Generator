@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Generator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>URL Generator</h1>
+        
+        <div class="input-section">
+            <h2 class="step-title">1. Введіть URL:</h2>
+            <input type="text" id="url-input" placeholder="https://example.com">
+        </div>
+
+        <h2 class="step-title">2. Виберіть мови та додаткові параметри:</h2>
+        
+        <div class="two-columns">
+            <div class="checkboxes-section">
+                <h3>Мови:</h3>
+                
+                <div class="control-buttons">
+                    <button id="select-all" class="btn">Select All</button>
+                    <button id="deselect-all" class="btn">Deselect All</button>
+                </div>
+
+                <div class="checkboxes-grid" id="checkboxes-container">
+                    <!-- Чекбокси будуть додані через TypeScript -->
+                </div>
+            </div>
+
+            <div class="checkboxes-section">
+                <h3>Додаткові параметри:</h3>
+                
+                <div class="control-buttons">
+                    <button id="select-all-additional" class="btn">Select All</button>
+                    <button id="deselect-all-additional" class="btn">Deselect All</button>
+                </div>
+
+                <div class="checkboxes-grid" id="additional-checkboxes-container">
+                    <!-- Додаткові чекбокси будуть додані через TypeScript -->
+                </div>
+            </div>
+        </div>
+
+        <div class="results-section">
+            <h2 class="step-title">3. Відкрийте URL's:</h2>
+            <button id="open-urls" class="btn btn-open" disabled>Open URL's</button>
+            <div id="results" class="results-list">
+                <p class="no-results">Оберіть чекбокси для генерації URL</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
