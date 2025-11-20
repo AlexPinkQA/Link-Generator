@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Generator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>URL Generator</h1>
+        
+        <div class="input-section">
+            <label for="url-input">Введіть URL:</label>
+            <input type="text" id="url-input" placeholder="https://example.com">
+        </div>
+
+        <div class="checkboxes-section">
+            <h2>Виберіть теги:</h2>
+            
+            <div class="control-buttons">
+                <button id="select-all" class="btn">Вибрати всі</button>
+                <button id="deselect-all" class="btn">Прибрати виділення</button>
+            </div>
+
+            <div class="checkboxes-grid" id="checkboxes-container">
+                <!-- Чекбокси будуть додані через TypeScript -->
+            </div>
+        </div>
+
+        <div class="results-section">
+            <h2>Згенеровані URL:</h2>
+            <div id="results" class="results-list">
+                <p class="no-results">Оберіть чекбокси для генерації URL</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
