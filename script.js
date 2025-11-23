@@ -93,11 +93,19 @@ class URLGenerator {
             checkbox.id = `lang-${index}`;
             checkbox.value = lang.tag;
             checkbox.dataset.name = lang.name;
+            
+            // Fix: Stop propagation when the checkbox itself is clicked, 
+            // preventing the parent div listener from double-toggling.
+            checkbox.addEventListener('click', (e) => {
+                e.stopPropagation();
+                this.updateResults(); // Update results when the checkbox state changes via direct click
+            });
 
             const label = document.createElement('label');
             label.htmlFor = `lang-${index}`;
             label.textContent = lang.name;
 
+            // Handle click on the whole div (or label)
             checkboxDiv.addEventListener('click', () => {
                 checkbox.checked = !checkbox.checked;
                 this.updateResults();
@@ -118,11 +126,19 @@ class URLGenerator {
             checkbox.type = 'checkbox';
             checkbox.id = `preset-${index}`;
             checkbox.value = tag.tag;
+            
+            // Fix: Stop propagation when the checkbox itself is clicked, 
+            // preventing the parent div listener from double-toggling.
+            checkbox.addEventListener('click', (e) => {
+                e.stopPropagation();
+                this.updateResults(); // Update results when the checkbox state changes via direct click
+            });
 
             const label = document.createElement('label');
             label.htmlFor = `preset-${index}`;
             label.textContent = tag.name;
 
+            // Handle click on the whole div (or label)
             checkboxDiv.addEventListener('click', () => {
                 checkbox.checked = !checkbox.checked;
                 this.updateResults();
@@ -476,17 +492,30 @@ class TutorialManager {
             
             // Позиціювати popup після невеликої затримки (щоб прокрутка встигла відбутись)
             setTimeout(() => {
+                // Отримуємо розміри цільового елемента та попапу
                 const rect = targetElement.getBoundingClientRect();
                 const popupHeight = this.popup.offsetHeight || 200;
+                const popupWidth = this.popup.offsetWidth || 350;
                 
                 if (this.currentStep === 0) {
-                    // Крок 1: popup під полем URL
-                    this.popup.style.top = `${rect.bottom + 10}px`;
-                    this.popup.style.left = `${Math.max(20, rect.left)}px`;
+                    // Крок 1: popup під полем URL (10px нижче INPUT)
+                    const inputRect = document.getElementById('url-input').getBoundingClientRect();
+                    this.popup.style.top = `${inputRect.bottom + 10}px`;
+                    this.popup.style.left = `${Math.max(20, inputRect.left)}px`;
                 } else if (this.currentStep === 1) {
-                    // Крок 2: popup НАД секцією Languages
-                    this.popup.style.top = `${rect.top - popupHeight - 10}px`;
-                    this.popup.style.left = `${Math.max(20, rect.left)}px`;
+                    // Крок 2: popup справа від секції Languages та вирівняний по верхньому краю
+                    const languageSection = document.getElementById('step-2');
+                    const langRect = languageSection.getBoundingClientRect();
+                    
+                    // Позиціонування відносно step-2
+                    this.popup.style.top = `${langRect.top}px`;
+                    
+                    // Перевірка, чи поміститься popup справа. Якщо ні, розміщуємо зліва
+                    if (langRect.right + 10 + popupWidth > window.innerWidth - 20) {
+                         this.popup.style.left = `${langRect.left - popupWidth - 10}px`;
+                    } else {
+                         this.popup.style.left = `${langRect.right + 10}px`;
+                    }
                 }
             }, 100);
         }
