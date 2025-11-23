@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Hamburger Menu -->
     <button class="hamburger-btn" id="hamburger-btn">
         <span></span>
         <span></span>
@@ -25,7 +24,6 @@
             <li><a href="/operators" class="menu-link" data-page="operators">Operators</a></li>
         </ul>
         
-        <!-- Theme Toggle in Menu -->
         <div class="theme-toggle-menu">
             <div class="theme-toggle" id="theme-toggle">
                 <div class="toggle-slider"></div>
@@ -37,7 +35,6 @@
 
     <div class="menu-overlay" id="menu-overlay"></div>
 
-    <!-- Page 1: URL Generator -->
     <div class="page active" id="page-home">
         <h1 class="page-title">URL Generator</h1>
         
@@ -49,10 +46,9 @@
                 <input type="text" id="url-input" placeholder="https://example.com">
             </div>
 
-            <h2 class="step-title">2. Choose languages and additional parameters:</h2>
-        
             <div class="two-columns">
                 <div class="checkboxes-section" id="step-2">
+                    <h2 class="step-title">2. Choose languages:</h2>
                     <h3>Languages:</h3>
                 
                     <div class="control-buttons">
@@ -63,7 +59,8 @@
                     <div class="checkboxes-grid" id="checkboxes-container"></div>
                 </div>
 
-                <div class="additional-params">
+                <div class="additional-params" id="step-3">
+                    <h2 class="step-title">3. Choose additional parameters:</h2>
                     <h3>Additional Parameters:</h3>
                 
                     <div class="param-section">
@@ -89,8 +86,8 @@
                 </div>
             </div>
 
-            <div class="results-section">
-                <h2 class="step-title">3. Open URL's:</h2>
+            <div class="results-section" id="step-4">
+                <h2 class="step-title">4. Open URL's:</h2>
                 <div class="action-buttons">
                     <button id="open-urls" class="btn btn-open" disabled>Open URL's</button>
                     <button id="share-state" class="btn btn-copy">Share Configuration</button>
@@ -102,7 +99,6 @@
         </div>
     </div>
 
-    <!-- Page 2: Operators -->
     <div class="page" id="page-operators">
         <h1 class="page-title">Operators</h1>
         
@@ -111,7 +107,6 @@
         </div>
     </div>
 
-    <!-- Tutorial Overlay -->
     <div class="tutorial-overlay" id="tutorial-overlay"></div>
     <div class="tutorial-popup" id="tutorial-popup">
         <div class="tutorial-content">
